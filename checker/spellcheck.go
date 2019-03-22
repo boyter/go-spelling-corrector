@@ -27,11 +27,22 @@ func (s *SpellChecker) Correct(word string) string {
 	for _, e := range edits {
 		m := s.words[e]
 
+		// Add to the possible matches with count
 		if m != 0 {
 			return e
 		}
 	}
 
+	// Loop over our possible matches finding anything thats
+	// already in our words. If its the same length
+	// put it into same length slice
+	// otherwise put it in the general
+
+	// If the same length slice has anything then get the one with the highest
+	// count and return that
+	// Otherwise loop the other list looking for the best match and return that
+
+	// If nothing, then run word edits over each word in edits and do the same thing
 
 	return ""
 }

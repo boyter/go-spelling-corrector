@@ -11,6 +11,6 @@ func main() {
 
 	fmt.Println(spellchecker.Correct("spulling"))
 
-	fmt.Println(checker.WordEdits("test"))
+	fmt.Println(checker.WordEdits("spelling"))
 }
 
