@@ -56,6 +56,11 @@ func WordEdits(word string) []string {
 		}
 	}
 
+	// Perhaps they added an extra letter try removing it
+	for i := 0; i<len(word); i++ {
+		closeWords = append(closeWords, word[:i] + word[i+1:])
+	}
+
 	return closeWords
 }
 

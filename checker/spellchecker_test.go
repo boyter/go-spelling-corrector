@@ -59,3 +59,14 @@ func TestCheckerLast(t *testing.T) {
 		t.Errorf("Should be tests got '%s'", suggested)
 	}
 }
+
+func TestCheckerRemoval(t *testing.T) {
+	spellChecker := NewSpellChecker()
+	spellChecker.Train("tests")
+
+	suggested := spellChecker.Correct("testsz")
+
+	if suggested != "tests" {
+		t.Errorf("Should be tests got '%s'", suggested)
+	}
+}
