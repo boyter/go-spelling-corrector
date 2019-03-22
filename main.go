@@ -9,7 +9,7 @@ func main() {
 	spellchecker := checker.NewSpellChecker()
 	spellchecker.Train("spelling")
 
-	fmt.Println(spellchecker.Correct("spulling"))
+	fmt.Println(spellchecker.Correct("spuslling"))
 
 	fmt.Println(checker.WordEdits("spelling"))
 }

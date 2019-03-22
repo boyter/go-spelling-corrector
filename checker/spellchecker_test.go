@@ -70,3 +70,14 @@ func TestCheckerRemoval(t *testing.T) {
 		t.Errorf("Should be tests got '%s'", suggested)
 	}
 }
+
+func TestTwoDistanceSpelling(t *testing.T) {
+	spellchecker := NewSpellChecker()
+	spellchecker.Train("spelling")
+
+	suggested := spellchecker.Correct("spuslling")
+
+	if suggested != "spelling" {
+		t.Errorf("Should be spelling got '%s'", suggested)
+	}
+}
