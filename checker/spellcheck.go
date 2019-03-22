@@ -49,6 +49,13 @@ func WordEdits(word string) []string {
 		}
 	}
 
+	// Perhaps they missed a letter try adding one in
+	for i := 0; i<len(word) + 1; i++ {
+		for letter := 'a'; letter <= 'z'; letter++ {
+			closeWords = append(closeWords, word[:i] + string(letter) + word[i:])
+		}
+	}
+
 	return closeWords
 }
 

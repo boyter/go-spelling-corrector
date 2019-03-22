@@ -48,3 +48,14 @@ func TestCheckerCorrectLonger(t *testing.T) {
 		t.Errorf("Should be best got '%s'", suggested)
 	}
 }
+
+func TestCheckerLast(t *testing.T) {
+	spellChecker := NewSpellChecker()
+	spellChecker.Train("tests")
+
+	suggested := spellChecker.Correct("test")
+
+	if suggested != "tests" {
+		t.Errorf("Should be tests got '%s'", suggested)
+	}
+}

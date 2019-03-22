@@ -8,7 +8,9 @@ import (
 func main() {
 	spellchecker := checker.NewSpellChecker()
 	spellchecker.Train("spelling")
-	
+
 	fmt.Println(spellchecker.Correct("spulling"))
+
+	fmt.Println(checker.WordEdits("test"))
 }
 
