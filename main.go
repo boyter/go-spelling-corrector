@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/boyter/go-spelling-corrector/checker"
 )
 
@@ -13,4 +14,3 @@ func main() {
 
 	fmt.Println(checker.WordEdits("spelling"))
 }
-

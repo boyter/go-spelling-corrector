@@ -4,7 +4,7 @@ type SpellChecker struct {
 	words map[string]int32
 }
 
-func(s *SpellChecker) Build() {
+func (s *SpellChecker) Build() {
 	s.words = make(map[string]int32)
 }
 
@@ -78,12 +78,8 @@ func (s *SpellChecker) Correct(word string) string {
 
 	// If nothing, then run word edits over each word in edits and do the same thing
 
-
-
-
 	return ""
 }
-
 
 // Returns a slice of strings which are similar to the
 // supplied word and indicate a "misspelling"
@@ -91,27 +87,26 @@ func WordEdits(word string) []string {
 	closeWords := []string{}
 
 	// Perhaps they mistyped a letter try mutating one
-	for i := 0; i<len(word); i++ {
+	for i := 0; i < len(word); i++ {
 		for letter := 'a'; letter <= 'z'; letter++ {
-			closeWords = append(closeWords, word[:i] + string(letter) + word[i+1:])
+			closeWords = append(closeWords, word[:i]+string(letter)+word[i+1:])
 		}
 	}
 
 	// Perhaps they missed a letter try adding one in
-	for i := 0; i<len(word) + 1; i++ {
+	for i := 0; i < len(word)+1; i++ {
 		for letter := 'a'; letter <= 'z'; letter++ {
-			closeWords = append(closeWords, word[:i] + string(letter) + word[i:])
+			closeWords = append(closeWords, word[:i]+string(letter)+word[i:])
 		}
 	}
 
 	// Perhaps they added an extra letter try removing it
-	for i := 0; i<len(word); i++ {
-		closeWords = append(closeWords, word[:i] + word[i+1:])
+	for i := 0; i < len(word); i++ {
+		closeWords = append(closeWords, word[:i]+word[i+1:])
 	}
 
 	return closeWords
 }
-
 
 func NewSpellChecker() *SpellChecker {
 	spellChecker := SpellChecker{}
