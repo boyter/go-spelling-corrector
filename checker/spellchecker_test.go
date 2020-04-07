@@ -75,7 +75,7 @@ func TestTwoDistanceSpelling(t *testing.T) {
 	spellchecker := NewSpellChecker()
 	spellchecker.Train("spelling")
 
-	suggested := spellchecker.Correct("spuslling")
+	suggested := spellchecker.Correct("spulling")
 
 	if suggested != "spelling" {
 		t.Errorf("Should be spelling got '%s'", suggested)

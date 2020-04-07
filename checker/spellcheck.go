@@ -1,7 +1,10 @@
 package checker
 
+import "sync"
+
 type SpellChecker struct {
 	words map[string]int32
+	mutex sync.Mutex
 }
 
 func (s *SpellChecker) Build() {
@@ -9,12 +12,16 @@ func (s *SpellChecker) Build() {
 }
 
 func (s *SpellChecker) Train(word string) {
+	s.mutex.Lock()
 	s.words[word] = s.words[word] + 1
+	s.mutex.Unlock()
 }
 
 func (s *SpellChecker) Correct(word string) string {
 	// Check if we already have the word
+	s.mutex.Lock()
 	m := s.words[word]
+	s.mutex.Unlock()
 	if m != 0 {
 		return word
 	}
@@ -30,7 +37,9 @@ func (s *SpellChecker) Correct(word string) string {
 	// put it into same length slice
 	// otherwise put it in the general
 	for _, e := range edits {
+		s.mutex.Lock()
 		m := s.words[e]
+		s.mutex.Unlock()
 
 		// Add to the possible matches with count
 		if m != 0 {
